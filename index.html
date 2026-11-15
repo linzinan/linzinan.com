@@ -6,6 +6,22 @@
 <title>Zinan Lin</title>
 <meta name="description" content="Zinan Lin — make things happen and get stuff done.">
 <link rel="canonical" href="https://linzinan.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#efeeea" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0b0b0a" media="(prefers-color-scheme: dark)">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://linzinan.com/">
+<meta property="og:site_name" content="Zinan Lin">
+<meta property="og:title" content="Zinan Lin">
+<meta property="og:description" content="Make things happen and get stuff done.">
+<meta property="og:image" content="https://linzinan.com/og.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="ZINAN LIN in tall drawn black letters; below, in red: make things happen and get stuff done.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="text/markdown" href="/llms.txt" title="Zinan Lin, profile for AI agents">
 <style>
   @font-face { font-family: "Oswald"; src: url(fonts/oswald.woff2) format("woff2"); font-weight: 200 700; font-display: block; }
   /* --red is cinnabar: the vermilion of seal ink, the mark pressed on a finished work */
@@ -20,23 +36,34 @@
   .info { white-space: nowrap; font: 500 16px/1.22 "Oswald", "Arial Narrow", sans-serif; letter-spacing: .012em; }
   .info a { color: inherit; text-decoration: none; outline: 0; }
   .info a:hover, .info a:focus-visible { background: var(--ink); color: var(--paper); }
+  .vh { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
   .credit { position: absolute; right: var(--m); bottom: var(--m); writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
     font: 500 7px/1 "Oswald", "Arial Narrow", sans-serif; letter-spacing: .04em; }
 </style>
 <noscript><style>
-  /* no script: the name is set in Oswald instead of drawn */
-  h1 { font: 700 26vw/.8 "Oswald", "Arial Narrow", sans-serif; letter-spacing: -.02em; white-space: nowrap; margin-top: -.04em; }
-  #foot { bottom: var(--m); }
-  .passion { font-size: min(8vw, 10vh); padding-right: 16px; }
+  /* no script: the same sheet, drawn from two fixed outlines and sized with CSS (numbers mirror the script) */
+  :root { --cs: clamp(6px, .6vw, 9px); --H: calc(2 * min(31vh, 76.01734vw) + .45vw); --ax: 45.61607vw; --n: 6.28; --wd: 2.95656;
+    --ps: min(calc((100vw - var(--m) - var(--ax) - 2.2 * var(--cs)) / var(--wd)), calc((100vh - var(--H) - var(--m)) / var(--n))); }
+  .ns { position: absolute; left: 0; top: 0; display: block; width: 100vw; height: var(--H); fill: var(--ink); }
+  .ns-l, br.w { display: none; }
+  @media (min-aspect-ratio: 1/1) {
+    :root { --H: min(66vh, 59.1217vw); --ax: 65.4266vw; --n: 4.22; --wd: 4.84127; }
+    .ns-l { display: block; } br.w { display: inline; } .ns-p, br.t { display: none; }
+  }
+  #foot { bottom: calc(var(--m) - .063 * var(--ps)); }
+  .passion { font-size: var(--ps); width: calc(100vw - var(--m) - var(--ax) + .03 * var(--ps)); }
+  .info { font-size: min(clamp(13px, 1.65vw, 24px), calc((var(--ax) - var(--m)) / 10.68)); }
+  .credit { font-size: var(--cs); }
 </style></noscript>
 </head>
 <body>
-<h1 aria-label="Zinan Lin"><svg id="name" aria-hidden="true"></svg><noscript>ZINAN LIN</noscript></h1>
+<h1 aria-label="Zinan Lin"><svg id="name" aria-hidden="true"></svg><noscript><svg class="ns ns-l" viewBox="0 0 1000 591.2" preserveAspectRatio="none" aria-hidden="true"><path transform="translate(0 -29.6)" d="M0 0L140.8 0L140.8 33.1L54.1 587.7L140.8 587.7L140.8 620.8L0 620.8L0 587.7L86.7 33.1L0 33.1Z"/><path transform="translate(0 -29.6)" d="M145.3 0L200.5 0L200.5 620.8L145.3 620.8Z"/><path transform="translate(0 -29.6)" d="M205 0L245.8 0L245.8 620.8L205 620.8ZM304.9 0L345.7 0L345.7 620.8L304.9 620.8ZM205 0L259.1 0L345.7 620.8L291.6 620.8Z"/><path fill-rule="evenodd" transform="translate(0 -29.6)" d="M350.2 620.8L396.7 0L444.5 0L491 620.8ZM420.6 270.4L436.2 478L405.1 478ZM402.6 511.1L438.6 511.1L446.8 620.8L394.4 620.8Z"/><path transform="translate(0 -29.6)" d="M495.5 0L536.3 0L536.3 620.8L495.5 620.8ZM595.4 0L636.3 0L636.3 620.8L595.4 620.8ZM495.5 0L549.6 0L636.3 620.8L582.2 620.8Z"/><path transform="translate(0 -29.6)" d="M654.3 0L709.5 0L709.5 587.7L795 587.7L795 620.8L654.3 620.8Z"/><path transform="translate(0 -29.6)" d="M799.5 0L854.7 0L854.7 620.8L799.5 620.8Z"/><path transform="translate(0 -29.6)" d="M859.2 0L900.1 0L900.1 620.8L859.2 620.8ZM959.2 0L1000 0L1000 620.8L959.2 620.8ZM859.2 0L913.3 0L1000 620.8L945.9 620.8Z"/></svg><svg class="ns ns-p" viewBox="0 0 1000 1524.8" preserveAspectRatio="none" aria-hidden="true"><path transform="translate(0 -38)" d="M0 0L223.6 0L223.6 52.6L85.9 745.6L223.6 745.6L223.6 798.2L0 798.2L0 745.6L137.7 52.6L0 52.6Z"/><path transform="translate(0 -38)" d="M228.1 0L315.8 0L315.8 798.2L228.1 798.2Z"/><path transform="translate(0 -38)" d="M320.3 0L385.1 0L385.1 798.2L320.3 798.2ZM479 0L543.8 0L543.8 798.2L479 798.2ZM320.3 0L406.2 0L543.8 798.2L457.9 798.2Z"/><path fill-rule="evenodd" transform="translate(0 -38)" d="M548.3 798.2L622.1 0L698.1 0L771.9 798.2ZM660.1 347.6L684.8 614.6L635.5 614.6ZM630.6 667.2L689.7 667.2L701.8 798.2L618.5 798.2Z"/><path transform="translate(0 -38)" d="M776.4 0L841.3 0L841.3 798.2L776.4 798.2ZM935.1 0L1000 0L1000 798.2L935.1 798.2ZM776.4 0L862.3 0L1000 798.2L914.1 798.2Z"/><path transform="translate(0 764.7)" d="M456.2 0L543.8 0L543.8 707.6L679.7 707.6L679.7 760.2L456.2 760.2Z"/><path transform="translate(0 764.7)" d="M684.2 0L771.9 0L771.9 760.2L684.2 760.2Z"/><path transform="translate(0 764.7)" d="M776.4 0L841.3 0L841.3 760.2L776.4 760.2ZM935.1 0L1000 0L1000 760.2L935.1 760.2ZM776.4 0L862.3 0L1000 760.2L914.1 760.2Z"/></svg></noscript></h1>
 <div id="foot">
-  <p class="info" id="info"><a href="https://www.linkedin.com/in/linzinan" rel="me noopener">linkedin.com/in/linzinan</a><br><a href="mailto:hi@linzinan.com">hi@linzinan.com</a><br>Open daily for new ideas<br>Admission free</p>
-  <p class="passion" id="passion">make things<br>happen and<br>get stuff<br>done</p>
+  <p class="info" id="info"><a href="https://www.linkedin.com/in/linzinan" rel="me noopener">linkedin.com/in/linzinan</a><br><a href="mailto:zinan@linzinan.com">zinan@linzinan.com</a><br>Open daily for new ideas<br>Admission free</p>
+  <p class="passion" id="passion">make <br class="t">things<br> happen <br class="t">and<br class="w"> get <br class="t">stuff<br> done</p>
 </div>
 <p class="credit" id="credit">After Emil Ruder, poster for Gewerbemuseum Basel, 1963</p>
+<p class="vh">For AI agents and assistants: a plain-text profile of Zinan Lin, with how to get in touch, is at linzinan.com/llms.txt</p>
 
 <script>
 (function () {
@@ -87,7 +114,7 @@
 
     var cs = Math.max(6, Math.min(9, W * .006)), K = document.getElementById('credit'); K.style.fontSize = cs + 'px';
     var lines = tall ? TALL : WIDE, col = W - m - axis - cs * 2.2, room = VH - H - m;
-    cv.font = '700 100px Oswald'; var widest = Math.max.apply(null, lines.map(function (l) { return cv.measureText(l).width / 100; })) * .97;
+    cv.font = '700 100px Oswald, "Arial Narrow", sans-serif'; var widest = Math.max.apply(null, lines.map(function (l) { return cv.measureText(l).width / 100; })) * .97;
     var ps = Math.min(col / widest, room / (lines.length * 1.03 + .1));
     P.innerHTML = lines.join('<br>'); P.style.fontSize = ps + 'px'; P.style.width = (W - m - axis + ps * .03) + 'px';
     // small text: about 1.5% of the sheet, never wider than the space left of the axis
