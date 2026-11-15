@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zinan Lin</title>
+<meta name="description" content="Zinan Lin — make things happen and get stuff done.">
+<link rel="canonical" href="https://linzinan.com/">
+<style>
+  @font-face { font-family: "Oswald"; src: url(fonts/oswald.woff2) format("woff2"); font-weight: 200 700; font-display: block; }
+  /* --red is cinnabar: the vermilion of seal ink, the mark pressed on a finished work */
+  :root { --paper: #efeeea; --ink: #0b0b0a; --red: #c2321d; --m: clamp(10px, 1.3vw, 22px); }
+  @media (prefers-color-scheme: dark) { :root { --paper: #0b0b0a; --ink: #efeeea; --red: #dc4a32; } }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; overflow: hidden; }
+  body { position: relative; background: var(--paper); color: var(--ink); -webkit-font-smoothing: antialiased; }
+  #name { position: absolute; left: 0; top: 0; display: block; fill: var(--ink); }
+  #foot { position: absolute; left: var(--m); right: var(--m); display: flex; justify-content: space-between; align-items: flex-end; align-items: last baseline; }
+  .passion { white-space: nowrap; color: var(--red); font: 700 100px/1.03 "Oswald", "Arial Narrow", sans-serif; letter-spacing: -.012em; word-spacing: -.06em; }
+  .info { white-space: nowrap; font: 500 16px/1.22 "Oswald", "Arial Narrow", sans-serif; letter-spacing: .012em; }
+  .info a { color: inherit; text-decoration: none; outline: 0; }
+  .info a:hover, .info a:focus-visible { background: var(--ink); color: var(--paper); }
+  .credit { position: absolute; right: var(--m); bottom: var(--m); writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap;
+    font: 500 7px/1 "Oswald", "Arial Narrow", sans-serif; letter-spacing: .04em; }
+</style>
+<noscript><style>
+  /* no script: the name is set in Oswald instead of drawn */
+  h1 { font: 700 26vw/.8 "Oswald", "Arial Narrow", sans-serif; letter-spacing: -.02em; white-space: nowrap; margin-top: -.04em; }
+  #foot { bottom: var(--m); }
+  .passion { font-size: min(8vw, 10vh); padding-right: 16px; }
+</style></noscript>
+</head>
+<body>
+<h1 aria-label="Zinan Lin"><svg id="name" aria-hidden="true"></svg><noscript>ZINAN LIN</noscript></h1>
+<div id="foot">
+  <p class="info" id="info"><a href="https://www.linkedin.com/in/linzinan" rel="me noopener">linkedin.com/in/linzinan</a><br><a href="mailto:hi@linzinan.com">hi@linzinan.com</a><br>Open daily for new ideas<br>Admission free</p>
+  <p class="passion" id="passion">make things<br>happen and<br>get stuff<br>done</p>
+</div>
+<p class="credit" id="credit">After Emil Ruder, poster for Gewerbemuseum Basel, 1963</p>
+
+<script>
+(function () {
+  var svg = document.getElementById('name'), P = document.getElementById('passion'), C = document.getElementById('info'), F = document.getElementById('foot');
+  var WIDE = ['make things', 'happen and', 'get stuff', 'done'], TALL = ['make', 'things', 'happen', 'and get', 'stuff', 'done'];
+  var cv = document.createElement('canvas').getContext('2d');
+
+  // Letters are drawn, not set: Z I N A L are all straight strokes, so the name
+  // is rebuilt for every sheet — stroke weight follows the width, height follows the sheet.
+  function glyph(ch, x, w, H, t) {
+    var b = t * .6, s = t * .74, dg = t * .98;      // bars lighter than stems; long diagonals carry the weight
+    var p = function (a) { return 'M' + a.map(function (q) { return (x + q[0]).toFixed(1) + ' ' + q[1].toFixed(1); }).join('L') + 'Z'; };
+    if (ch === 'I') return p([[0,0],[t,0],[t,H],[0,H]]);
+    if (ch === 'L') return p([[0,0],[t,0],[t,H-b],[w,H-b],[w,H],[0,H]]);
+    // Z: one full-length stroke from corner to corner
+    if (ch === 'Z') return p([[0,0],[w,0],[w,b],[dg,H-b],[w,H-b],[w,H],[0,H],[0,H-b],[w-dg,b],[0,b]]);
+    // N: the diagonal runs the whole height and lands on a point
+    if (ch === 'N') return p([[0,0],[s,0],[s,H],[0,H]]) + p([[w-s,0],[w,0],[w,H],[w-s,H]]) + p([[0,0],[dg,0],[w,H],[w-dg,H]]);
+    if (ch === 'A') { // steep legs, low thin bar, a long sliver of light
+      var xl = w * .33, leg = t * .8, inL = function (y) { return xl * (1 - y / H) + leg; }, mid = w / 2;
+      var ya = H * (1 - (mid - leg) / xl), y1 = H * .77, y2 = y1 + b;
+      return p([[0,H],[xl,0],[w-xl,0],[w,H]]) + p([[mid,ya],[w-inL(y1),y1],[inL(y1),y1]]) + p([[inL(y2),y2],[w-inL(y2),y2],[w-inL(H),H],[inL(H),H]]);
+    }
+  }
+
+  function draw() {
+    var W = innerWidth, VH = innerHeight, m = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--m')) || 16;
+    m = Math.max(10, Math.min(22, W * .013));
+    var tall = W < VH, g = Math.max(2, W * .0045), k = 2.55, d = '', axis = 0, H, t, w;
+    function row(word, x, y, h) {
+      for (var i = 0; i < word.length; i++) {
+        var ch = word[i], cw = ch === 'I' ? t : w;
+        if (ch === 'L') axis = x;
+        d += ('<g transform="translate(0 ' + y.toFixed(1) + ')"><path fill-rule="FR" d="' + glyph(ch, x, cw, h, t) + '"/></g>').replace('FR', ch === 'A' ? 'evenodd' : 'nonzero'); x += cw + g;
+      }
+      return x;
+    }
+    if (tall) {            // two rows: ZINAN is the full measure, LIN steps down flush right
+      t = (W - 4 * g) / (4 * k + 1); w = t * k;
+      var h = Math.min(VH * .31, w * 3.4), c = h * .05; H = Math.round(h * 2 + g);
+      row('ZINAN', 0, -c, h + c); row('LIN', W - (2 * w + t + 2 * g), h + g, h);
+    } else {               // one row, edge to edge
+      t = (W - 10 * g) / (6 * k + 2); w = t * k; H = Math.round(Math.min(VH * .66, w * 4.2)); var c = H * .05;
+      row('LIN', row('ZINAN', 0, -c, H + c) + g * 3, -c, H + c);
+    }
+    svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.innerHTML = d;
+
+    var cs = Math.max(6, Math.min(9, W * .006)), K = document.getElementById('credit'); K.style.fontSize = cs + 'px';
+    var lines = tall ? TALL : WIDE, col = W - m - axis - cs * 2.2, room = VH - H - m;
+    cv.font = '700 100px Oswald'; var widest = Math.max.apply(null, lines.map(function (l) { return cv.measureText(l).width / 100; })) * .97;
+    var ps = Math.min(col / widest, room / (lines.length * 1.03 + .1));
+    P.innerHTML = lines.join('<br>'); P.style.fontSize = ps + 'px'; P.style.width = (W - m - axis + ps * .03) + 'px';
+    // small text: about 1.5% of the sheet, never wider than the space left of the axis
+    var fs = Math.max(13, Math.min(24, W * .0165)); C.style.fontSize = fs + 'px';
+    var over = C.offsetWidth / (axis - m - fs); if (over > 1) C.style.fontSize = (fs / over) + 'px';
+    F.style.bottom = '0px'; var base = P.getBoundingClientRect().bottom - ps * .063;   // baseline of the last heavy line
+    F.style.bottom = (base - (VH - m)) + 'px';
+  }
+  addEventListener('resize', draw); draw();
+  if (document.fonts) document.fonts.load('700 100px Oswald').then(draw);
+})();
+</script>
+</body>
+</html>
